@@ -11,6 +11,30 @@
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+
+Route::get("/logout", 'HomeController@doLogout');
+
+Auth::routes();
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
+});
+
+Route::get('/home', function () {
+    return view('home');
+});
+
+// Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(["prefix" => "trip"], function () {
+    Route::get("/", "TripController@index");
+    Route::get("/create", "TripController@create");
+    Route::post("/create", "TripController@postCreate");
+    Route::post("/edit/{id}", "TripController@postEdit");
+    Route::get("/edit/{id}", "TripController@edit");
+    Route::get("/{id}", "TripController@edit");
 });

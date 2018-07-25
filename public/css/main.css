@@ -1,0 +1,50 @@
+ul.globalErrors {
+    list-style: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9000;
+    width: 100%;
+    color: #fff;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 25px;
+    background-color: red;
+}
+
+ul.globalSuccess {
+    list-style: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9000;
+    width: 100%;
+    color: #fff;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 25px;
+    background-color: rgb(255, 87, 0);
+}
+
+.logout {
+    display: inline-block;
+    float: right;
+    padding: 15px;
+}
+
+.logout a,
+a.dropdown-toggle,
+.panel-heading a {
+    text-decoration: none;
+}
+
+.logout a:hover {
+    color: #337ab7;
+}
+
+a.publish,
+a.spam {
+    color: #fff;
+    text-decoration: none;
+    padding: 15px;
+}
