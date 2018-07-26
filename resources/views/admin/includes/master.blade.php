@@ -53,19 +53,19 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="{{url("")}}">Holycode Task</a>
+              <a class="navbar-brand" href="{{url("")}}">{{Lang::get('titles.task')}}</a>
           </div>
           <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
           @section('sidebar')
           <div class="collapse navbar-collapse navbar-ex1-collapse">
               <ul class="nav navbar-nav side-nav">
                 <li>
-                    <a href="{{url("/trip")}}"><i class="fa fa-dashboard"></i> Trips</a>
+                    <a href="{{url("/trip")}}"><i class="fa fa-dashboard"></i> {{Lang::get('titles.trip.trips')}}</a>
                 </li>
               </ul>
               <div class="logout">
-                {{ Auth::user()->name }}
-                  <a onclick="return (confirm('Are you sure you want to logout?'))"href="{{url("/logout")}}">Logout</a>
+                <span class="user-name">{{Lang::get('titles.hello')}}, {{ Auth::user()->name }} </span>
+                  <a onclick="return (confirm('Are you sure you want to logout?'))"href="{{url("/logout")}}">{{Lang::get('titles.logout')}}</a>
               </div>
           </div>
           <!-- /.navbar-collapse -->
@@ -81,7 +81,7 @@
 
     <!-- jQuery -->
     <script src="{{url("js/jquery.js")}}"></script>
-
+    
     <!-- Bootstrap Core JavaScript -->
     <script src="{{url("js/bootstrap.min.js")}}"></script>
 

@@ -1,4 +1,8 @@
-<div id="map" style="width: 100%; height: 100%;"></div>
+@extends("admin.includes.master")
+
+@section('content')
+    <div id="map" style="width: 100%; height: 100%;"></div>
+@endsection
 
 <script type="text/javascript"
     src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js">
@@ -28,7 +32,7 @@ function loadGPXFileIntoGoogleMap(map, filename) {
 
 $(document).ready(function() {
     var mapOptions = {
-      zoom: 8,
+      zoom: 6,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     var map = new google.maps.Map(document.getElementById("map"),

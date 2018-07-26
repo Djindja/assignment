@@ -58,7 +58,6 @@ class TripController extends Controller
             $gpx = simplexml_load_file($destinationPath . '/' . $uniqueFileName);
 
             $trip = new Trip();
-            $trip->name = $uniqueFileName;
             $trip->user_id = Auth::user()->id;
             $trip->filename = $uniqueFileName;
             $trip->save();

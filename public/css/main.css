@@ -32,19 +32,11 @@ ul.globalSuccess {
     padding: 15px;
 }
 
-.logout a,
-a.dropdown-toggle,
-.panel-heading a {
-    text-decoration: none;
-}
-
-.logout a:hover {
-    color: #337ab7;
-}
-
-a.publish,
-a.spam {
+.user-name {
     color: #fff;
+    padding-right: 15px;
+}
+
+.logout a {
     text-decoration: none;
-    padding: 15px;
 }

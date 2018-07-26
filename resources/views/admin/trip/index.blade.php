@@ -18,7 +18,7 @@
           <tr>
             <th style="text-align: left; width: 5%;">#</th>
             <th style="text-align: left; width: 20%;">{{Lang::get('titles.trip.name')}}</th>
-            <th style="text-align: center; width: 5%;">{{Lang::get('titles.edit')}}</th>
+            <th style="text-align: center; width: 5%;">{{Lang::get('titles.trip.route')}}</th>
             <th style="text-align: center; width: 5%;">{{Lang::get('titles.delete')}}</th>
           </tr>
         </thead>
@@ -26,9 +26,9 @@
           @foreach($trips as $index => $trip)
           <tr>
             <td style="text-align: left; width: 5%;" scope="row">{{$index+1}}</td>
-            <td style="text-align: left; width: 20%;">{{$trip->name}}</td>
+            <td style="text-align: left; width: 20%;">{{$trip->filename}}</td>
             <td style="text-align: center; width: 5%;"><a href="{{url("trip/edit/$trip->id")}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-            <td style="text-align: center; width: 5%;"><a onclick="return (confirm('Are you sure?'))" href="{{url("trip/delete/$trip->id")}}"><i class="fa fa-times" aria-hidden="true"></i></a></td>
+            <td style="text-align: center; width: 5%;"><a onclick="return (confirm('Are you sure you want to delete Trip?'))" href="{{url("trip/delete/$trip->id")}}"><i class="fa fa-times" aria-hidden="true"></i></a></td>
           </tr>
           @endforeach
         </tbody>

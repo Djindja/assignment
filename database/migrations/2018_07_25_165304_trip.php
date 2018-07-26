@@ -16,7 +16,6 @@ class Trip extends Migration
         Schema::create('trips', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->string('name');
             $table->string('filename');
             $table->timestamps();
         });
