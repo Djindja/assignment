@@ -60,6 +60,7 @@ class TripController extends Controller
             $trip = new Trip();
             $trip->name = $uniqueFileName;
             $trip->user_id = Auth::user()->id;
+            $trip->filename = $uniqueFileName;
             $trip->save();
 
             foreach($gpx->trk->trkseg->trkpt as $g) {

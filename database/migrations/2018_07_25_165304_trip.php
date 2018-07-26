@@ -17,6 +17,7 @@ class Trip extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->string('name');
+            $table->string('filename');
             $table->timestamps();
         });
     }
