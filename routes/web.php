@@ -24,10 +24,6 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/home', function () {
-    return view('home');
-});
-
 // Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(["prefix" => "trip"], function () {
@@ -37,4 +33,5 @@ Route::group(["prefix" => "trip"], function () {
     Route::post("/edit/{id}", "TripController@postEdit");
     Route::get("/edit/{id}", "TripController@edit");
     Route::get("/{id}", "TripController@edit");
+    Route::get("/delete/{id}", "TripController@delete");
 });

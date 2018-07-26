@@ -7,7 +7,10 @@ use Lang;
 use Illuminate\Http\Request;
 use Response;
 use Validator;
+use Exception;
 use App\Trip;
+use Carbon\Carbon;
+use App\TripPath;
 use Illuminate\Support\Facades\Input;
 
 class TripController extends Controller
@@ -35,7 +38,7 @@ class TripController extends Controller
     public function postCreate(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            "gpx" => "required",
+            "gpx" => "required|file",
         ]);
 
         if ($validator->fails()) {
@@ -43,7 +46,7 @@ class TripController extends Controller
                                                      ->withInput();
         }
 
-        if($request->hasFile('gpx')) {
+        try {
             $file = $request->file('gpx');
             $name = $file->getClientOriginalName();
             $extension = $file->getClientOriginalExtension();
@@ -51,21 +54,32 @@ class TripController extends Controller
             $destinationPath = public_path('/uploads');
             
             $file->move($destinationPath, $uniqueFileName);
-        }
-        
-        $gpx = simplexml_load_file($uniqueFileName);
-        dd($gpx);
-        
-        $trip = new Trip();
-        $trip->lat = $gpx->lat;
-        $trip->lon = $gpx->lon;
-        $trip->ele = $gpx->ele;
-        $trip->time = $gpx->time;
-        
-        if ($trip->save()) {
+
+            $gpx = simplexml_load_file($destinationPath . '/' . $uniqueFileName);
+
+            $trip = new Trip();
+            $trip->name = $uniqueFileName;
+            $trip->user_id = Auth::user()->id;
+            $trip->save();
+
+            foreach($gpx->trk->trkseg->trkpt as $g) {
+                $coordinates = $g->attributes();
+                
+                $tripPath = new TripPath();
+                $tripPath->lat = $coordinates['lat'];
+                $tripPath->lon = $coordinates['lon'];
+                $tripPath->ele = $g->ele;
+                $tripPath->time = Carbon::parse($g->time)->format('Y-m-d h:i:s');
+                $tripPath->trip_id = $trip->id;
+
+                $tripPath->save();
+               
+            }
+            
             return redirect("/trip/edit/$trip->id")->with('successfulMessages',[Lang::get('errors.successfullyTrip')]);
-        } else {
-            return redirect("/trip/create")->withErrors([Lang::get('errors.somethingWrong')]);
+        
+        }  catch(Exception $e) {
+            return redirect("/trip/create")->withErrors([Lang::get($e->getMessage())]);
         }
     }
     /**

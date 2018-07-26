@@ -64,6 +64,7 @@
                 </li>
               </ul>
               <div class="logout">
+                {{ Auth::user()->name }}
                   <a onclick="return (confirm('Are you sure you want to logout?'))"href="{{url("/logout")}}">Logout</a>
               </div>
           </div>

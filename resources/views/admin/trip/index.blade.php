@@ -28,7 +28,7 @@
             <td style="text-align: left; width: 5%;" scope="row">{{$index+1}}</td>
             <td style="text-align: left; width: 20%;">{{$trip->name}}</td>
             <td style="text-align: center; width: 5%;"><a href="{{url("trip/edit/$trip->id")}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-            <td style="text-align: center; width: 5%;"><a onclick="return (confirm('Are you sure?'))" href="{{url("trips/delete/$trip->id")}}"><i class="fa fa-times" aria-hidden="true"></i></a></td>
+            <td style="text-align: center; width: 5%;"><a onclick="return (confirm('Are you sure?'))" href="{{url("trip/delete/$trip->id")}}"><i class="fa fa-times" aria-hidden="true"></i></a></td>
           </tr>
           @endforeach
         </tbody>
