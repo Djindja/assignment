@@ -30,7 +30,6 @@ Route::group(["prefix" => "trip"], function () {
     Route::get("/", "TripController@index");
     Route::get("/create", "TripController@create");
     Route::post("/create", "TripController@postCreate");
-    Route::post("/edit/{id}", "TripController@postEdit");
     Route::get("/edit/{id}", "TripController@edit");
     Route::get("/{id}", "TripController@edit");
     Route::get("/delete/{id}", "TripController@delete");

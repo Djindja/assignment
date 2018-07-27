@@ -96,29 +96,7 @@ class TripController extends Controller
         }
         return View::make('admin.trip.edit')->with('trip', $trip);
     }
-    /**
-     * Editing trips information
-     * @param  int $id
-     * @return Response edit Users name or get an error
-     */
-      public function postEdit(Request $request, int $id)
-      {
-          $validator = Validator::make($request->all(), [
-              "gpx" => "required",
-        ]);
 
-        if ($validator->fails()) {
-            return redirect("/trips/edit/$id")->withErrors($validator->errors())
-                                                       ->withInput();
-        }
-          $trip = Trip::find($id);
-    
-          if ($trip->save()) {
-              return redirect("/trip/edit/$trip->id")->with('successfulMessages',[Lang::get('errors.successfullyTrip')]);
-          } else {
-              return redirect("/trip/edit/$trip->id")->withErrors([Lang::get('errors.somethingWrong')]);
-          }
-      }
     /**
      * Delete trip
      * @param  int $id

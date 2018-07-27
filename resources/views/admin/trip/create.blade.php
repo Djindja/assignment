@@ -22,7 +22,7 @@
   </br>
 
   <div class="col-md-2">
-      <button type="submit" class="btn btn-primary btn-md col-md-6">{{Lang::get('titles.submit')}}</button>
+      <button type="submit" class="btn btn-primary btn-md">{{Lang::get('titles.submit')}}</button>
   </div>
  </div>
 </form>
